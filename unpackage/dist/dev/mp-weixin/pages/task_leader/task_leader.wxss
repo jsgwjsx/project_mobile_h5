@@ -1,0 +1,39 @@
+
+.lunbo{
+	height: 8000rpx;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.tab-bar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f8f8;
+}
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.tab.active {
+  color: #007aff;
+  border-bottom: 2px solid #007aff;
+}
+.task-list {
+  padding: 10px;
+}
+.task-box {
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.task-text {
+  margin-bottom: 5px;
+}
+
+

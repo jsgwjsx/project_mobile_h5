@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/log/log",
+    "pages/register/register",
+    "pages/account/account",
+    "pages/task_leader/task_leader"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "iconfontSrc": "static/fonts/iconfont.ttf",
+    "list": [
+      {
+        "text": "地图",
+        "pagePath": "pages/log/log",
+        "iconPath": "static/地图.png"
+      },
+      {
+        "text": "任务",
+        "pagePath": "pages/task_leader/task_leader",
+        "iconPath": "static/任务 (1).png"
+      },
+      {
+        "text": "用户",
+        "pagePath": "pages/account/account",
+        "iconPath": "static/我的 (1).png",
+        "selectedIconPath": "static/个人资料.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

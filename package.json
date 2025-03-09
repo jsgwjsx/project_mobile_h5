@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
+    "@dcloudio/uni-ui": "^1.5.5",
+    "@turf/center": "^7.2.0",
+    "@turf/turf": "^7.2.0",
+    "axios": "^1.7.9",
+    "element-ui": "^2.15.14",
+    "esri-loader": "^3.7.0",
+    "gcoord": "^1.0.7",
+    "uview-ui": "^2.0.38"
+  },
+  "devDependencies": {
+    "sass": "^1.85.0",
+    "sass-loader": "^10.5.2"
+  }
+}
