@@ -88,7 +88,7 @@
         "devServer" : {
             "proxy" : {
                 "/api" : {
-                    "target" : "http://127.0.0.1:8000",
+                    "target" : "http://10.100.230.127:8000",
                     "changeOrigin" : true,
                     "secure" : false,
                     "pathRewrite" : {
@@ -96,7 +96,7 @@
                     }
                 },
 				"/geolocation":{
-					"target":"ws://127.0.0.1:8000",
+					"target":"ws://10.100.230.127:8000",
 					"changeOrigin":true,
 					"secure":false,
 					"pathRewrite" : {

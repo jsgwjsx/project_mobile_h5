@@ -11,18 +11,21 @@
 			<view class="status">
 				<view class="groupid">{{groupid}}</view>
 				<view class="statusid">
-					<svg v-if="statusid" t="1739531912715" class="icon" viewBox="0 0 1024 1024" version="1.1"
+					<!-- <svg v-if="statusid" t="1739531912715" class="icon" viewBox="0 0 1024 1024" version="1.1"
 						xmlns="http://www.w3.org/2000/svg" p-id="11493" width="100%" height="100%">
 						<path
 							d="M511.860364 0.139636A511.813818 511.813818 0 1 0 1023.744 512 511.744 511.744 0 0 0 511.860364 0.139636zM716.8 706.187636a45.149091 45.149091 0 0 1-63.488 6.4L476.346182 567.854545a44.916364 44.916364 0 0 1-16.570182-34.90909v-211.525819a45.102545 45.102545 0 1 1 90.205091 0v190.045091l160.581818 131.351273a45.102545 45.102545 0 0 1 6.283636 63.394909z m0 0"
 							fill="#3CB034" p-id="11494"></path>
-					</svg>
-					<svg v-if="!statusid" t="1739532838972" class="icon" viewBox="0 0 1024 1024" version="1.1"
+							
+					</svg> -->
+					<!-- <svg v-if="!statusid" t="1739532838972" class="icon" viewBox="0 0 1024 1024" version="1.1"
 						xmlns="http://www.w3.org/2000/svg" p-id="15198" width="100%" height="100%">
 						<path
 							d="M512 0C229.23264 0 0 229.23264 0 512s229.23264 512 512 512 512-229.23264 512-512S794.76736 0 512 0z m256 576H256A60.16 60.16 0 0 1 192 512 60.16 60.16 0 0 1 256 448h512a60.16 60.16 0 0 1 64 64 60.16 60.16 0 0 1-64 64z"
 							fill="#F8353F" p-id="15199"></path>
-					</svg>
+					</svg> -->
+					  <img src="/static/" alt="" v-if="statusid" class="small-image" />
+					 <img src="/static/工作中.png" alt="" v-if="!statusid" class="responsive-image" />
 				</view>
 				<view class="status_item">
 					<view style="font-size: 18px; font-weight: 500;color: greenyellow;" v-if="statusid">
@@ -188,6 +191,20 @@
 </script>
 
 <style lang="scss">
+	.small-image {
+  width: 50px; /* 设置图片宽度 */
+  height: 50px; /* 设置图片高度 */
+  object-fit: cover; /* 保持图片比例，防止变形 */
+position: relative;
+  top: 6px; left: -6px;
+}
+.responsive-image {
+  width: 100%; /* 图片宽度占满父容器 */
+  max-width: 80px; /* 最大宽度限制 */
+  height: auto; /* 高度自适应，保持比例 */
+  position: relative;
+  top: 6px; left: -6px;
+}
 	.status {
 		display: flex;
 		flex-direction: row;

@@ -76,6 +76,16 @@
 				map.setCenter(lnglat, true)
 				workmarker = new AMap.Marker({
 					position: lnglat,
+					icon: new AMap.Icon({
+					    image: '/static/深蓝色起点.png',
+					    size: new AMap.Size(40, 40),
+					    imageSize: new AMap.Size(40, 40),
+					   
+					  }),
+					  autoCenter: true, 
+					  
+                   offset: new AMap.Pixel(-20, -32),
+					// icon: '/static/深蓝色起点.png',
 					label: {
 						direction: 'top',
 						offset: new AMap.Pixel(0, 0), //设置文本标注偏移量
@@ -83,7 +93,14 @@
 					}
 				});
 				endMarker = workmarker
-				// 为 Marker 设置点击事件
+				
+				
+				
+				// var marker = new AMap.Marker({
+				//     position: new AMap.LngLat(113.8,22.5),   
+				//     offset: new AMap.Pixel(-25, -50),
+				//     icon: icon,
+				// });
 				workmarker.on('click', function() {
 					if (re.Tracking) {
 						re.drivingRoute()
@@ -98,7 +115,7 @@
 					re.targetdestinction = '工作地点'
 					endMarker.setIcon(new AMap.Icon({
 						size: new AMap.Size(36, 36),
-						image: '/static/起点.png',
+						image: '/static/酒红色起点.png',
 						imageSize: new AMap.Size(36, 36),
 						//imageOffset: new AMap.Pixel(-90, -3)
 					}))
@@ -120,14 +137,33 @@
 						id: infoMachine.accumulation
 					}).then(res => {
 						var lnglat = wgs84togcj02(res.data.coordinates[0], res.data.coordinates[1])
+						// accumulationmarker = new AMap.Marker({
+						// 	position: lnglat,
+						// 	label: {
+						// 		image: '/static/终点-y.png',
+						// 		// icon: new AMap.Icon({
+						// 		// image: '/static/聚雪区.png', 
+						// 		//   size: new AMap.Size(40, 40),
+						// 		//   imageSize: new AMap.Size(40, 40),
+						// 		// }),
+						// 		direction: 'top',
+						// 		offset: new AMap.Pixel(0, 0), //设置文本标注偏移量
+						// 		content: "<div class='info'>聚集点</div>",
+						// 	}
+						// });
 						accumulationmarker = new AMap.Marker({
-							position: lnglat,
-							label: {
-								direction: 'top',
-								offset: new AMap.Pixel(0, 0), //设置文本标注偏移量
-								content: "<div class='info'>聚集点</div>",
-							}
-						});
+								position: lnglat,
+								icon: new AMap.Icon({
+								    image: '/static/酒红色起点.png', 
+								    size: new AMap.Size(40, 40), 
+								    imageSize: new AMap.Size(40, 40), 
+								  }),
+								label: {
+									direction: 'top',
+									offset: new AMap.Pixel(0, 0), //设置文本标注偏移量
+									content: "<div class='info'>聚集点</div>",
+								}
+							});
 						map.add(accumulationmarker);
 						accumulationmarker.on('click', function() {
 							if (re.Tracking) {
@@ -143,7 +179,7 @@
 							re.targetdestinction = '聚集地'
 							endMarker.setIcon(new AMap.Icon({
 								size: new AMap.Size(36, 36),
-								image: '/static/起点.png',
+								image: '/static/深蓝色起点.png',
 								imageSize: new AMap.Size(36, 36),
 								//imageOffset: new AMap.Pixel(-90, -3)
 							}))
@@ -191,6 +227,11 @@
 							var lnglat = wgs84togcj02(poscenter[0], poscenter[1])
 							snowareamarker = new AMap.Marker({
 								position: lnglat,
+								icon: new AMap.Icon({
+								    image: '/static/积雪区起点.png', 
+								    size: new AMap.Size(40, 40), 
+								    imageSize: new AMap.Size(40, 40), 
+								  }),
 								label: {
 									direction: 'top',
 									offset: new AMap.Pixel(0, 0), //设置文本标注偏移量
@@ -212,7 +253,7 @@
 								re.targetdestinction = '积雪区域'
 								endMarker.setIcon(new AMap.Icon({
 									size: new AMap.Size(36, 36),
-									image: '/static/起点.png',
+									image: '/static/积雪区起点.png',
 									imageSize: new AMap.Size(36, 36),
 								}))
 								snowareamarker.setIcon(new AMap.Icon({
@@ -237,6 +278,11 @@
 				map.setCenter(lnglat, true)
 				accumulationmarker = new AMap.Marker({
 					position: lnglat,
+					icon: new AMap.Icon({
+					    image: '/static/酒红色起点.png', 
+					    size: new AMap.Size(40, 40), 
+					    imageSize: new AMap.Size(40, 40), 
+					  }),
 					label: {
 						direction: 'top',
 						offset: new AMap.Pixel(0, 0), //设置文本标注偏移量
@@ -258,7 +304,7 @@
 					re.targetdestinction = '聚集地'
 					endMarker.setIcon(new AMap.Icon({
 						size: new AMap.Size(36, 36),
-						image: '/static/起点.png',
+						image: '/static/深蓝色起点.png',
 						imageSize: new AMap.Size(36, 36),
 						//imageOffset: new AMap.Pixel(-90, -3)
 					}))
@@ -529,7 +575,7 @@
 								strokeColor: 'white',
 								strokeWeight: 2,
 								strokeOpacity: 0.5,
-								fillColor: '#4288e2',
+								fillColor: '#d76136',
 								fillOpacity: 0.8,
 								zIndex: 10,
 								bubble: true,

@@ -6,16 +6,26 @@
 		</view>
 		<swiper :current="currentTab" @change="onSwiperChange" class="lunbo">
 			<swiper-item >
-				<view class="task-list">
+				<view class="task-list" >
 					<view v-for="task in unfinishedTasks" :key="task.id"  :class="task.avator?'task-box':'aleaderwork'">
-						<view class="task_content"  >
+						<!-- <view class="task_content"  >
 							<view class="task-text">开始时间:{{ task.starttime }}</view>
 							<view class="task-text">结束时间: {{ task.endtime }}</view>
 							<view class="task-text">范围: {{task.center}}为中心{{task.radius}}m内的道路</view>
 							<view class="task-text" v-if="task.license">车牌号:{{task.license}}</view>
 							<view class="task-text" v-if="!task.license">组长电话:{{task.group_tel}}</view>
 							<view class="task-text">状态: 未完成</view>
-						</view>
+						</view> -->
+						<template>
+  <view class="task_content" :class="{ active: isActive }" @click="toggleBackground">
+    <view class="task-text">开始时间: {{ task.starttime }}</view>
+    <view class="task-text">结束时间: {{ task.endtime }}</view>
+    <view class="task-text">范围: {{ task.center }}为中心{{ task.radius }}m内的道路</view>
+    <view class="task-text" v-if="task.license">车牌号: {{ task.license }}</view>
+    <view class="task-text" v-else>组长电话: {{ task.group_tel }}</view>
+    <view class="task-text status">状态: 未完成</view>
+  </view>
+</template>
 						<view class="task_button">
 							<button type="primary" size='mini' @click="settingWork(task.id,task.position,task.geom,task.radius)" class="startwork">开始工作</button>
 							<button type="primary" size='mini' @click="submitWork(task.id,task.position,task.radius,task.avator)" v-if="ifsumbit"  class="submitwork">提交工作</button>
@@ -96,7 +106,7 @@ import { onMounted } from "vue";
 						this.processData(res.data.worklist,{license:res.data.license})
 					})
 				} else {
-					//是员工，此时要根据groupid找对应的group，然后去work中查找对应的任务
+					
 					axios.post('/api/map/WorkSearch', {
 						groupid:res.data.groupid,
 					}).then(res => {
@@ -312,6 +322,35 @@ import { onMounted } from "vue";
 </script>
 
 <style>
+	
+	.task_content {
+	  padding: 20px;
+	  background-color: #f9f9f9;
+	  border-radius: 10px;
+	  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	  margin: 10px;
+	  transition: background-color 0.3s ease;
+	}
+	
+	.task_content.active {
+	  background-color: #e0f7fa;
+	}
+	
+	.task-text {
+	  font-size: 14px;
+	  color: #333;
+	  margin-bottom: 10px;
+	  line-height: 1.6;
+	}
+	
+	.task-text.status {
+	  font-weight: bold;
+	  color: #ff5722;
+	}
+	
+	.task-text:last-child {
+	  margin-bottom: 0;
+	}
 	.submitwork{
 		background-color:darkorange;
 		width: 130px;
@@ -370,6 +409,7 @@ import { onMounted } from "vue";
 
 	.task-list {
 		padding: 10px;
+		border: none;
 	}
 
 	.task-box {
@@ -377,8 +417,8 @@ import { onMounted } from "vue";
 		margin: 20px;
 		margin-bottom: 10px;
 		padding: 15px;
-		border: 1px solid rgb(72, 86, 104,1);
-		border-radius: 5px;
+		border: 0px solid rgb(72, 86, 104,1);
+		border-radius: 10px;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		width:calc(100% - 60px);
 		height: 100%;
